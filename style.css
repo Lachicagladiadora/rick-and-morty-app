@@ -1,1 +1,168 @@
 
+:root{
+  --sky-blue: #00a5be;
+  --brown: #685128;
+  --orange: #f7391c;
+  --black:#000000;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  display: block;
+  background: var(--sky-blue);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.grid{
+  display: grid;
+  height: 100vh;
+  padding-inline: 4em;
+  grid-template-columns: 50px 1fr 1fr 200px;
+  grid-template-rows: 312px 1fr 1fr 1fr;
+  grid-template-areas: "asset-top logo logo social-media" "name characterName avatar avatar" "about description avatar avatar" "assetsLine learnMore arrow otherLine" ;
+}
+.asset.top{
+  grid-area: asset-top;
+  
+  border: solid 2px red;
+  display: flex;
+  align-items: center;
+  place-content: end;
+  flex-flow: column;
+}
+
+.logo{
+  grid-area: logo;
+
+  margin: 0 auto;
+  display: block;
+  padding: 1.5em 0;
+}
+
+.social-media{
+  grid-area: social-media;
+
+  border:  solid 2px rgb(255, 13, 0);
+}
+
+.navigation-name{
+  grid-area: name;
+
+  border: solid 2px white;
+}
+.navigation-name a{
+  text-decoration: none;
+  /* display: flex; */
+  /* flex-flow: column; */
+}
+
+/* hasta aqui el grid */
+.navigation{
+  border: solid 3px orange;
+  margin: auto;
+  text-align: center;
+  width: 100vh;
+  padding-inline-end: 2.3em;
+  position: absolute;
+  bottom: 50%;
+  transform: rotate(270deg);
+  translate: -45%; 
+  text-transform: uppercase;
+  display: inline-flex;
+  justify-content: space-between;
+  /* padding-inline: 4em; */
+  display: none;
+}
+
+.navigation .text{
+  display: inline-flex;
+  padding: 0 20px;
+}
+
+.dot{
+  width: 10px;
+  height: 10px;
+  background: var(--black);
+  border-radius: 50%;
+  display: inline-flex;
+  margin: 5px;
+}
+
+.line{
+  width: 1px;
+  height: 100px;
+  background: var(--black);
+  display: inline-flex;
+  margin: 10px;
+}
+
+.wrapper{
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 2em;
+}
+
+.character{
+  text-align: center;
+  margin-left: 100px;
+}
+.character-image{
+  width: 100%;
+  border-radius: 50%;
+}
+.character-name{
+  font-size: 35px;
+  text-transform: uppercase;
+}
+.character-labels{
+  max-width: 300px;
+}
+.character-label{
+  background: var(--brown);
+  padding: 1em;
+  color: white;
+  border-radius: 10px;
+  font-size: 25px;
+  text-align: left;
+  width: 95%;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 1024px) {
+  .character-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name image" "labels image";
+  }
+  .character-image{
+    grid-area: image;
+    width: 300px;
+    border-radius: 10px;
+  }
+  .character-name{
+    text-align: left;
+  }
+  .character-name h2{
+    grid-area: name;
+    font-size: 50px;
+    position: relative;
+    
+  }
+  .character-name h2::after{
+    content: "";
+    width: 87px;
+    height: 6px;
+    background-color: var(--orange);
+    display: inline-flex;
+    position: absolute;
+    left: 50% + 3px;
+    bottom: 50%;
+
+  }
+  .character-labels{
+    grid-area: labels;
+    max-width: 300px;
+  }
+ 
+}
