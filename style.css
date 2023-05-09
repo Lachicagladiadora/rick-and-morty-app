@@ -16,20 +16,57 @@ body{
 
 .grid{
   display: grid;
-  height: 100vh;
-  padding-inline: 4em;
+  height: calc(100vh - 8em);
+  padding: 4em;
   grid-template-columns: 50px 1fr 1fr 200px;
-  grid-template-rows: 312px 1fr 1fr 1fr;
-  grid-template-areas: "asset-top logo logo social-media" "name characterName avatar avatar" "about description avatar avatar" "assetsLine learnMore arrow otherLine" ;
+  grid-template-rows: 212px 100px 1fr 1fr 1fr;
+  column-gap: 8em;
+  grid-template-areas: "asset-top logo logo social-media" "name character-name avatar avatar" "about character-description avatar avatar" "asset-bottom character-text avatar avatar" "asset-bottom learn-more arrow other-line";
+}
+.learn-more{
+  grid-area: learn-more;
+
+  border: solid 5px salmon;
+  display: flex;
+  align-items: flex-end;
+  font-size: 25px;
+  text-transform: uppercase;
+  background-image: url('./static/images/learn-more.svg');
+  background-position: left 180px bottom 5px;
+  background-repeat: no-repeat;
+}
+.arrow{
+  grid-area: arrow;
+
+  border: solid 5px rgb(221, 255, 0);
+  background-image: url('./static/images/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+.asset{
+  /* grid-area: asset-top; */
+  
+  /* border: solid 2px red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* flex-flow: column; */
 }
 .asset.top{
   grid-area: asset-top;
   
   border: solid 2px red;
-  display: flex;
-  align-items: center;
   place-content: end;
   flex-flow: column;
+  justify-content: space-between;
+}
+.asset.bottom{
+  grid-area: asset-bottom;
+  
+  border: solid 2px red;
+  place-content: start;
+  flex-flow: column;
+  justify-content: space-around;
 }
 
 .logo{
@@ -40,25 +77,63 @@ body{
   padding: 1.5em 0;
 }
 
+.navigation{
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation.name{
+  grid-area: name;
+
+  border: solid 3px rgb(199, 255, 102);
+}
+
+.navigation.about{
+  grid-area: about;
+
+  border: solid 3px rgb(93, 92, 94);
+}
+
+.navigation a{
+  text-decoration: none;
+  color: var(--black);
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
 .social-media{
   grid-area: social-media;
 
   border:  solid 2px rgb(255, 13, 0);
 }
 
-.navigation-name{
-  grid-area: name;
-
-  border: solid 2px white;
+.character-name-container{
+  border: solid 2px forestgreen;
+  display: flex;
+  align-items: center;
+  /* padding-inline-start: 1em; */
 }
-.navigation-name a{
-  text-decoration: none;
-  /* display: flex; */
-  /* flex-flow: column; */
+
+.character-description-container{
+  grid-area: character-description;
+
+
+}
+
+.character-image-container{
+  grid-area: avatar;
+
+  border: solid 3px brown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* hasta aqui el grid */
-.navigation{
+/* .navigation{
   border: solid 3px orange;
   margin: auto;
   text-align: center;
@@ -72,8 +147,8 @@ body{
   display: inline-flex;
   justify-content: space-between;
   /* padding-inline: 4em; */
-  display: none;
-}
+  /* display: none; */
+/* } */ 
 
 .navigation .text{
   display: inline-flex;
