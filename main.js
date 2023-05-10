@@ -2,39 +2,21 @@
 import './style.css'
 // import API
 import API from './api.js'
+import Character from './character.js'
 // API
 const api = new API()
 
-// get items
-const characterContainerElement = document.getElementById("character-container")
+let currentCharacter = Math.ceil(Math.random()*10)
+const arrowLoadNextElement = document.getElementById("load-next")
 
 // validate
-if (!characterContainerElement) alert('element with id"character-container"does not exist')
+if (!arrowLoadNextElement) alert('element with id"load-next"does not exist')
 
-// Object of character
-class Character {
-  constructor({name, image}){
-    this.name = name;
-    this.image = image;
-    this.render()
-  }
-  built(){
-    return `
-    <article class="character">
-    <div class="character-grid">
-      <h2 class="character-name">${this.name}</h2>
-      <img src="${this.image}" alt="">
-    </div>
-    </article>  
-  `
-  }
-  render(){
-    characterContainerElement.innerHTML=this.built()
-  }
+const nextCharacter = async () => {
+  const characterData = await api.getCherater(++currentCharacter)
+  console.log(characterData)
+  const rick = new Character(characterData)
 }
-
-// render character
-
 
 // async function with API
 async function initApp(initCharacterId){
@@ -43,8 +25,9 @@ async function initApp(initCharacterId){
   const rick = new Character(characterData)
 }
 
-// initApp(1)
-
+initApp(currentCharacter)
+arrowLoadNextElement.addEventListener('click', nextCharacter)
 // pruebitas
-// console.log(api.getCherater(1))
-// console.log('Hi! world')
+// console.log(api.getCherater(3))
+console.log('Hi! world')
+// Math.ceil(Math.random()*10)

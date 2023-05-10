@@ -15,6 +15,7 @@ body{
 }
 
 .grid{
+  
   display: grid;
   height: calc(100vh - 8em);
   padding: 4em;
@@ -111,6 +112,8 @@ body{
 }
 
 .character-name-container{
+  grid-area: character-name;
+
   border: solid 2px forestgreen;
   display: flex;
   align-items: center;
@@ -183,12 +186,29 @@ body{
   margin-left: 100px;
 }
 .character-image{
-  width: 100%;
+  max-width: 100%;
+  /* height: 100%; */
   border-radius: 50%;
+  
 }
 .character-name{
   font-size: 35px;
   text-transform: uppercase;
+}
+.character-name h2{
+  /* grid-area: name; */
+  font-size: 50px;
+  position: relative;
+}
+.character-name h2::after{
+  content: "";
+  width: 87px;
+  height: 6px;
+  background-color: var(--orange);
+  display: inline-flex;
+  position: absolute;
+  left: 50% + 3px;
+  bottom: 50%;
 }
 .character-labels{
   max-width: 300px;
@@ -204,40 +224,31 @@ body{
   font-weight: 400;
 }
 
-@media screen and (min-width: 1024px) {
-  .character-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "name image" "labels image";
+@media screen and (max-width: 1440px) {
+  .grid{
+    column-gap: 2em;
   }
-  .character-image{
-    grid-area: image;
-    width: 300px;
-    border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .grid{
+    border: solid 5px rgb(240, 0, 160);
+    grid-template-columns: 50px 1fr 200px;
+    grid-template-rows: 112px 300px 1fr 1fr 1fr;
+    grid-template-areas: "asset-top logo social-media" "name avatar avatar" "name character-description character-description" "about character-description character-description" "asset-bottom arrow learn more";
+    /* "asset-top logo social-media" "name avatar avatar" "name character-description character-description" "asset-bottom character-text" "asset-bottom learn-more arrow other-line"; */
   }
+
+}
+
+/* 
   .character-name{
     text-align: left;
   }
-  .character-name h2{
-    grid-area: name;
-    font-size: 50px;
-    position: relative;
-    
-  }
-  .character-name h2::after{
-    content: "";
-    width: 87px;
-    height: 6px;
-    background-color: var(--orange);
-    display: inline-flex;
-    position: absolute;
-    left: 50% + 3px;
-    bottom: 50%;
+ 
 
-  }
   .character-labels{
     grid-area: labels;
     max-width: 300px;
   }
- 
-}
+  */
