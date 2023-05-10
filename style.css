@@ -20,14 +20,12 @@ body{
   height: calc(100vh - 8em);
   padding: 4em;
   grid-template-columns: 50px 1fr 1fr 200px;
-  grid-template-rows: 212px 100px 1fr 1fr 1fr;
+  grid-template-rows: 232px 100px 1fr 1fr 1fr;
   column-gap: 8em;
-  grid-template-areas: "asset-top logo logo social-media" "name character-name avatar avatar" "about character-description avatar avatar" "asset-bottom character-text avatar avatar" "asset-bottom learn-more arrow other-line";
+  grid-template-areas: "asset-top logo logo social-media" "name character-name avatar avatar" "about character-description avatar avatar" "asset-bottom character-description avatar avatar" "asset-bottom learn-more arrow other-line";
 }
 .learn-more{
   grid-area: learn-more;
-
-  border: solid 5px salmon;
   display: flex;
   align-items: flex-end;
   font-size: 25px;
@@ -38,33 +36,23 @@ body{
 }
 .arrow{
   grid-area: arrow;
-
-  border: solid 5px rgb(221, 255, 0);
   background-image: url('./static/images/arrow.svg');
   background-repeat: no-repeat;
   background-position: left bottom;
 }
 .asset{
-  /* grid-area: asset-top; */
-  
-  /* border: solid 2px red; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* flex-flow: column; */
 }
 .asset.top{
   grid-area: asset-top;
-  
-  border: solid 2px red;
   place-content: end;
   flex-flow: column;
   justify-content: space-between;
 }
 .asset.bottom{
   grid-area: asset-bottom;
-  
-  border: solid 2px red;
   place-content: start;
   flex-flow: column;
   justify-content: space-around;
@@ -72,7 +60,6 @@ body{
 
 .logo{
   grid-area: logo;
-
   margin: 0 auto;
   display: block;
   padding: 1.5em 0;
@@ -88,14 +75,10 @@ body{
 
 .navigation.name{
   grid-area: name;
-
-  border: solid 3px rgb(199, 255, 102);
 }
 
 .navigation.about{
   grid-area: about;
-
-  border: solid 3px rgb(93, 92, 94);
 }
 
 .navigation a{
@@ -107,51 +90,25 @@ body{
 
 .social-media{
   grid-area: social-media;
-
-  border:  solid 2px rgb(255, 13, 0);
 }
 
 .character-name-container{
   grid-area: character-name;
-
-  border: solid 2px forestgreen;
   display: flex;
   align-items: center;
-  /* padding-inline-start: 1em; */
 }
 
 .character-description-container{
   grid-area: character-description;
-
-
 }
 
 .character-image-container{
   grid-area: avatar;
-
-  border: solid 3px brown;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* hasta aqui el grid */
-/* .navigation{
-  border: solid 3px orange;
-  margin: auto;
-  text-align: center;
-  width: 100vh;
-  padding-inline-end: 2.3em;
-  position: absolute;
-  bottom: 50%;
-  transform: rotate(270deg);
-  translate: -45%; 
-  text-transform: uppercase;
-  display: inline-flex;
-  justify-content: space-between;
-  /* padding-inline: 4em; */
-  /* display: none; */
-/* } */ 
 
 .navigation .text{
   display: inline-flex;
@@ -169,7 +126,7 @@ body{
 
 .line{
   width: 1px;
-  height: 100px;
+  height: 120px;
   background: var(--black);
   display: inline-flex;
   margin: 10px;
@@ -187,7 +144,6 @@ body{
 }
 .character-image{
   max-width: 100%;
-  /* height: 100%; */
   border-radius: 50%;
   
 }
@@ -196,7 +152,6 @@ body{
   text-transform: uppercase;
 }
 .character-name h2{
-  /* grid-area: name; */
   font-size: 50px;
   position: relative;
 }
@@ -211,7 +166,7 @@ body{
   bottom: 50%;
 }
 .character-labels{
-  max-width: 300px;
+  max-width: 96%;
 }
 .character-label{
   background: var(--brown);
@@ -227,28 +182,175 @@ body{
 @media screen and (max-width: 1440px) {
   .grid{
     column-gap: 2em;
+    padding: 2em;
+    grid-template-columns: 30px 1fr 1fr 20vw;
+    grid-template-rows: 20vh 15vh 20vh 20vh 5vh;
+    grid-template-areas: "asset-top logo logo social-media" "name character-name avatar avatar" "about character-description avatar avatar" "asset-bottom character-description avatar avatar" "asset-bottom learn-more arrow other-line";
+  }
+  .character-labels{
+    padding: 0;
+  }
+
+  .character-name-container {
+    justify-content: center;
+    margin-top: 2em;
+  }
+  .character-name h2{
+    font-size: 40px; 
   }
 }
 
 @media screen and (max-width: 1024px) {
   .grid{
-    border: solid 5px rgb(240, 0, 160);
-    grid-template-columns: 50px 1fr 200px;
-    grid-template-rows: 112px 300px 1fr 1fr 1fr;
-    grid-template-areas: "asset-top logo social-media" "name avatar avatar" "name character-description character-description" "about character-description character-description" "asset-bottom arrow learn more";
-    /* "asset-top logo social-media" "name avatar avatar" "name character-description character-description" "asset-bottom character-text" "asset-bottom learn-more arrow other-line"; */
+    height: 100vh;
+    padding: 1em;
+    grid-template-columns: 3vw  1fr 1fr;
+    grid-template-rows: 1fr 100px 150px 150px 1fr;
+    column-gap: 1em;
+    grid-template-areas: "asset-top logo logo" "name character-name arrow" "about character-description  avatar" "asset-bottom character-description  avatar" "asset-bottom learn-more social-media";
   }
-
+  .logo{
+    max-height: 100%;
+  }
+  .asset.top{
+    justify-content: flex-end;
+  }
+  .line{
+    width: 1px;
+    height: 80px;
+    background: var(--black);
+    display: inline-flex;
+    margin: 10px;
+  }
+  .asset.bottom{
+    justify-content: flex-start;
+  }
+  .arrow{
+    height: 80px;
+    width: 80px;
+    background-position: center;
+    -webkit-transform:rotate(-90deg); 
+    -moz-transform:rotate(-90deg);
+    background-size: 50px;
+    margin: auto;
+  }
+  .character-name-container {
+    justify-content: center;
+    height: 80px;
+  }
+  .character-name h2{
+    font-size: 35px; 
+  }
+  .character-name h2::after{
+    height: 5px;
+    bottom: 36%;
+    left: 101%;
+  }
+  .character-description-container{
+    margin: auto 1em;
+  }
+  .character-labels{
+    max-width: 96%;
+    margin-left: .5em;
+  }
+  .character-label{
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .navigation a{
+    font-size: 15px;
+  }
+  .learn-more{
+    font-size: 20px;
+    height: 25px;
+    background-position: right;
+    background-size: 200px;
+    width: 50vw;
+    padding-top: 0.5em;
+  }
+  .social-media{
+    margin: 2em;
+    display: flex;
+    margin: 0;
+    align-items: start;
+    justify-content: space-evenly;
+  }
 }
 
-/* 
-  .character-name{
-    text-align: left;
+@media screen and (max-width: 780px) {
+  .grid{
+    padding: 1em;
+    grid-template-columns: 30px 0.5fr 1fr;
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas: "asset-top logo logo" "asset-top avatar avatar" "name character-name character-name" "asset-bottom character-description character-description" "asset-bottom arrow arrow" "asset-bottom about learn-more" "social-media social-media social-media";
+    column-gap: 0;
   }
- 
-
+  .logo{
+    max-width: 100%;
+  }
+  .asset.top{
+    justify-content: flex-end;
+  }
+  .line{
+    width: 1px;
+    height: 200px;
+    background: var(--black);
+    display: inline-flex;
+    margin: 10px;
+  }
+  .asset.bottom{
+    justify-content: flex-start;
+  }
+  .logo{
+    width: 1fr;
+  }
+  .arrow{
+    height: 80px;
+    width: 80px;
+    background-position: center;
+    -webkit-transform:rotate(-90deg); 
+    -moz-transform:rotate(-90deg);
+    background-size: 50px;
+    margin: auto;
+  }
+  .character-name-container {
+    justify-content: center;
+    height: 57.8px;
+  }
+  .character-name h2{
+    font-size: 30px;
+  }
+  .character-name h2::after{
+    height: 5px;
+    bottom: 36%;
+    left: 100%;
+  }
   .character-labels{
-    grid-area: labels;
-    max-width: 300px;
+    max-width: 96%;
+    margin-left: .5em;
   }
-  */
+  .character-label{
+    text-align: center;
+  }
+  .navigation.about{
+    writing-mode: horizontal-tb;
+    transform: rotate(360deg);
+    justify-content: right;
+    padding-right: 2em;
+  }
+  .navigation a{
+    font-size: 20px;
+  }
+  .learn-more{
+    font-size: 20px;
+    justify-content: right;
+    padding: 0;
+    background: none;
+  }
+  .social-media{
+    margin: 2em;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
